@@ -1,51 +1,85 @@
-/* Add styles specific to Exercise 1 here */
+/* styles */
 
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 20px;
-    background-color: #fff;
+    background-color: #1a1a1a; /* Dark background */
+    color: #fff; /* Light text color */
     text-align: center;
 }
 
 h1 {
-    color: #007BFF;
+    color: #27ae60; /* Green title */
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    padding: 10px 0;
+    z-index: 1;
+}
+
+.container {
+    padding-top: 80px; /* Adjusted padding to account for fixed title */
 }
 
 .input-container {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    font-size: 16px;
 }
 
-input {
-    padding: 8px;
-    width: 200px;
+input,
+textarea {
+    padding: 12px;
+    width: 300px;
+    border: 1px solid #444; /* Darker border color */
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #333; /* Dark background for inputs */
+    color: #fff; /* Light text color for inputs */
+}
+
+/* Adjusted styles for result container */
+.result-container {
+    margin-bottom: 20px;
+}
+
+#resultContainer {
+    padding: 12px;
+    width: 300px;
+    height: 50px;
+    border: 1px solid #444; /* Darker border color */
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #333; /* Dark background for result container */
+    color: #fff; /* Light text color for result container */
 }
 
 button {
     display: inline-block;
-    padding: 10px 20px;
-    background-color: #007BFF;
+    padding: 12px 24px;
+    background-color: #27ae60; /* Green button */
     color: #fff;
     font-weight: bold;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    font-size: 16px;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #218c53; /* Darker green on hover */
 }
 
 /* Add spacing between buttons */
-.calculate-button {
-    margin-top: 10px; /* Adjust the value as needed */
-}
+.calculate-button,
 .go-back-button {
-    margin-top: 10px; /* Adjust the value as needed */
+    margin-top: 20px;
 }

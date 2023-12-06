@@ -1,21 +1,12 @@
-function exercise1(value1, value2) {
-    let result;
-
-    // Parse input values as float for numerical operations
-    value1 = parseFloat(value1);
-    value2 = parseFloat(value2);
-
-    // Check if input values are valid numbers
-    if (isNaN(value1) || isNaN(value2)) {
-        console.error("Please enter valid numerical values.");
-        return;
-    }
-
-    // Perform calculation
-    result = 2 * value1 + value2 - (value1 % 3);
-
-    console.log("The value of y is: " + result);
-
-    // Return the result
-    return result;
-};
+// Function to add two numbers
+function sumaDosNumeros(num1, num2) {
+    // Ensure the provided values are treated as numbers
+    num1 = parseFloat(num1);
+    num2 = parseFloat(num2);
+  
+    // Perform the addition operation
+    let resultado = num1 + num2;
+  
+    // Display the result to the user
+    return "La suma de " + num1 + " y " + num2 + " es: " + resultado;
+  };

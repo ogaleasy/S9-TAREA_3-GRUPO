@@ -4,33 +4,60 @@ const inputValue1 = document.getElementById('inputValue1');
 const inputValue2 = document.getElementById('inputValue2');
 const resultContainer = document.getElementById('resultContainer');
 const calculateButton = document.getElementById('calculateButton');
-
-// Back button
 const backButton = document.getElementById('backButton')
 
 // Pages
-const MAIN_PAGE = '../../index.html'
+const MAIN_PAGE = '../MainMenuPage/math_expressions.html'
 
-// Dictionary of main functions
-const mainFunctions = {
-    exercise1Button: exercise1,
-    exercise2Button: exercise2,
-    exercise3Button: exercise3,
-    exercise4Button: exercise4,
-    exercise5Button: exercise5,
-    // Agregua más funciones según sea necesario
-    // Add more main functions as needed
-};
+// Dictionary of main functions and titles
+const exercises = {
+    exercise1Button: {
+        title: "2 * value1 + value2 - (value1 % 3)",
+        func: exercise1,
+    },
+    exercise2Button: {
+        title: "(value1 * value2 + 3) % (value1 + value2)",
+        func: exercise2,
+    },
+    exercise3Button: {
+        title: "a - b + 2 * (a % b)",
+        func: exercise3,
+    },
+    exercise4Button: {
+        title: "2 * value2 + Math.floor(value1 / 2) + 4 * (value2 % value1)",
+        func: exercise4,
+    },
+    exercise5Button: {
+        title: "b - a + 3 * (a % b)",
+        func: exercise5,
+    },
 
-// Dictionary of main tittles
-const mainTittles = {
-    exercise1Button: "Nombre del ejercicio 1",
-    exercise2Button: "Nombre del ejercicio 2",
-    exercise3Button: "Nombre del ejercicio 3",
-    exercise4Button: "Nombre del ejercicio 4",
-    exercise5Button: "Nombre del ejercicio 5",
-    // Agregua más titulos según sea necesario
-    // Add more buttons as needed
+    exercise6Button: {
+        title: "b - a + 3 * (a % b)",
+        func: exercise6,
+    },
+
+    exercise7Button: {
+        title: "calcularExpresion7",
+        func: exercise7,
+    },
+
+    exercise8Button: {
+        title: "calcularExpresion8",
+        func: exercise8,
+    },
+
+    exercise9Button: {
+        title: "calcularExpresion9",
+        func: exercise9,
+    },
+
+    exercise10Button: {
+        title: "calcularExpresion10",
+        func: exercise10,
+    },
+
+    // Add more exercises as needed
 };
 
 // Function to show the result
@@ -43,30 +70,40 @@ function changePage(page) {
     location.href = page;
 };
 
-// Event listener for the calculate button
-calculateButton.addEventListener('click', function() {
+// Function to handle the calculation when the button is clicked
+function handleCalculateButtonClick() {
+    let selectedButtonName = getSelectedButtonName();
+
+    if (inputValue1.value === "") {
+        alert("Please enter a value before calculating.");
+        console.error("Please enter a value before calculating.");
+        return;
+    }
+
+    if (selectedButtonName) {
+        let selectedExercise = exercises[selectedButtonName];
+        let result = selectedExercise.func(inputValue1.value, inputValue2.value);
+        showResult(result);
+    }
+};
+
+// Call initializePage on window load
+function initializePage() {
     let selectedButtonName = getSelectedButtonName();
 
     if (selectedButtonName) {
-    let selectedFunction = mainFunctions[selectedButtonName];
-    let result = selectedFunction(inputValue1.value, inputValue2.value);
-    showResult(result);
-    } else {
-        console.error("Please select an exercise before calculating.");
+        let selectedExercise = exercises[selectedButtonName];
+        titlePage.innerText = selectedExercise.title;
     }
-});
+};
+
+// Event listener for the calculate button
+calculateButton.addEventListener('click', handleCalculateButtonClick);
 
 // Event listener for the back button
 backButton.addEventListener('click', function(){
     changePage(MAIN_PAGE)
 });
 
-//
-function windownsLoad() {
-    let selectedButtonName = getSelectedButtonName();
-
-    if (selectedButtonName) {
-        let selectedTittle = mainTittles[selectedButtonName];
-        titlePage.innerText = selectedTittle;
-    }
-};
+// Call initializePage on window load
+window.addEventListener('load', initializePage);
